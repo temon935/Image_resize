@@ -1,0 +1,16 @@
+<h1>Список изображений</h1>
+    {% if image %}
+        <a href="{% url 'upload' %}">Добавить изображение</a>
+        {% for el in image %}
+            {% if el.image_file %}
+                <div>
+                    <h3>{{el.image_file}}</h3>
+                    <img src="{{ el.image_file.url }}" alt="connect" style="max-height:300px">
+                    <a href="{% url 'image_resizing' el.id %}"><h3>{{el.id}}</h3></a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>У нас нет записей</p>
+        <a href="{% url 'upload' %}">Добавить изображение</a>
+    {% endif %}

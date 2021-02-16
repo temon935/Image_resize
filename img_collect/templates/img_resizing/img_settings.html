@@ -1,0 +1,29 @@
+<h1>Список изображений</h1>
+    {% if image %}
+        <a href="{% url 'upload' %}">Добавить изображение</a>
+            {% if image.image_file %}
+                <div>
+                    <h3>{{image.image_file}}</h3>
+                    <img src="{{ image.image_file.url }}">
+                </div>
+            {% endif %}
+    {% else %}
+        <p>У нас нет записей</p>
+        <a href="{% url 'upload' %}">Добавить изображение</a>
+    {% endif %}
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+{% if submitbutton == "Submit" %}
+<h1>Your height is {{ height }}</h1>
+<h1>Your weight name is {{ weight }}</h1>
+{% endif %}
+{% if img %}
+    <div>
+        <h3>{{img.height}}</h3>
+        <h3>{{img.width}}</h3>
+        <img src="{{ image.image_file.url }}">
+    </div>
+{% endif %}
